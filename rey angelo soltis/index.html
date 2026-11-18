@@ -1,0 +1,1498 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rey Angelo Soltis | Personal Portfolio</title>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ed2438'/%3E%3Ctext x='32' y='42' font-size='25' font-weight='bold' text-anchor='middle' fill='white'%3ERAS%3C/text%3E%3C/svg%3E">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --red: #ed2438;
+    --dark: #101014;
+    --panel: #19191f;
+    --white: #ffffff;
+    --gray: #a5a5af;
+    --border: rgba(255,255,255,.10);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    line-height: 1.7;
+    isolation: isolate;
+    position: relative;
+}
+
+/* SLOW ANIMATED BACKGROUND — visible behind every section */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -25%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 15% 25%, rgba(237,36,56,.22), transparent 34%),
+        radial-gradient(ellipse at 82% 35%, rgba(104,35,105,.18), transparent 32%),
+        radial-gradient(ellipse at 55% 85%, rgba(237,36,56,.13), transparent 38%),
+        linear-gradient(135deg, #09090d 0%, #151018 48%, #0c0c12 100%);
+    background-size: 150% 150%, 145% 145%, 160% 160%, 100% 100%;
+    background-position: 0% 0%, 100% 0%, 50% 100%, center;
+    animation: ambientFlow 22s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFlow {
+    0% {
+        background-position: 0% 0%, 100% 0%, 50% 100%, center;
+        transform: scale(1);
+    }
+    50% {
+        background-position: 45% 35%, 55% 60%, 20% 45%, center;
+        transform: scale(1.04);
+    }
+    100% {
+        background-position: 100% 80%, 0% 100%, 85% 0%, center;
+        transform: scale(1.08);
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1120px, calc(100% - 48px));
+    margin: auto;
+}
+
+.red, .section-heading h2 span,
+.hero h1 span, .contact h2 span {
+    color: var(--red);
+}
+
+/* NAVIGATION */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(16,16,20,.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Grotesk';
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: var(--red);
+    border-radius: 9px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #ccc;
+    font-size: 11px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--red);
+}
+
+.nav-button {
+    border: 1px solid var(--red);
+    padding: 9px 15px;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 680px;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.eyebrow, .section-label {
+    color: #ff6878;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.hello {
+    color: #aaa;
+    letter-spacing: 5px;
+    margin-top: 25px;
+}
+
+.hero h1 {
+    font-family: 'Space Grotesk';
+    font-size: clamp(55px, 7vw, 85px);
+    line-height: 1.1;
+    letter-spacing: -5px;
+}
+
+.hero h2 {
+    font-size: 17px;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+#typedText {
+    color: #ff6978;
+    transition: opacity .25s;
+}
+
+.hero-description {
+    color: var(--gray);
+    max-width: 480px;
+    font-size: 14px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 20px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+}
+
+.primary {
+    background: var(--red);
+}
+
+.outline {
+    border: 1px solid var(--border);
+}
+
+.stats {
+    display: flex;
+    gap: 35px;
+    margin-top: 45px;
+}
+
+.stats div {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats strong {
+    color: var(--red);
+    font-size: 22px;
+}
+
+.stats small {
+    color: #999;
+    font-size: 10px;
+}
+
+/* PROFILE PHOTO */
+
+.hero-image {
+    display: grid;
+    place-items: center;
+    min-height: 420px;
+    position: relative;
+}
+
+.profile {
+    width: 290px;
+    height: 360px;
+    padding: 12px;
+    background: linear-gradient(145deg,#45131d,#19191f);
+    border: 1px solid var(--red);
+    transform: rotate(3deg);
+    box-shadow: 0 20px 70px #ed243820;
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+}
+
+.about-photo {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    object-position: center 35%;
+    border: 1px solid #ed243855;
+    border-radius: 7px;
+    margin-bottom: 18px;
+}
+
+.profile-placeholder {
+    height: 100%;
+    background: #202027;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-placeholder strong {
+    font-size: 100px;
+    color: var(--red);
+}
+
+.profile-placeholder small {
+    color: #aaa;
+    letter-spacing: 2px;
+    font-size: 9px;
+}
+
+.floating {
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    background: #25252d;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 11px;
+}
+
+/* SECTIONS */
+
+.section {
+    padding: 105px 0;
+}
+
+.section-dark {
+    background: rgba(21,21,27,.62);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(2px);
+}
+
+.section-heading {
+    margin-bottom: 45px;
+}
+
+.section-heading h2 {
+    font-family: 'Space Grotesk';
+    font-size: clamp(34px,4vw,48px);
+    letter-spacing: -2px;
+    margin-top: 12px;
+}
+
+.description {
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 12px;
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 50px;
+}
+
+.quote {
+    padding: 30px;
+    background: linear-gradient(145deg,#35141d,#19191f);
+    border: 1px solid #ed243855;
+    border-radius: 9px;
+}
+
+.quote span {
+    font-size: 65px;
+    color: var(--red);
+}
+
+.quote h3 {
+    font-family: 'Space Grotesk';
+    font-size: 21px;
+}
+
+.about-text p {
+    color: var(--gray);
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.about-text strong {
+    color: white;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 17px;
+}
+
+.tags span {
+    font-size: 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 11px;
+}
+
+/* EDUCATION */
+
+.timeline {
+    margin-left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    padding-bottom: 35px;
+    border-left: 1px solid #ed243855;
+}
+
+.timeline-item:last-child {
+    border-left-color: transparent;
+}
+
+.dot {
+    position: absolute;
+    left: -6px;
+    top: 2px;
+    width: 11px;
+    height: 11px;
+    background: var(--red);
+    border-radius: 50%;
+}
+
+.date {
+    color: #ff6978;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.timeline-card {
+    padding: 25px;
+    background: #1d1d24;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.timeline-card h3 {
+    font-family: 'Space Grotesk';
+    font-size: 19px;
+    margin: 10px 0;
+}
+
+.timeline-card p {
+    color: var(--gray);
+    font-size: 12px;
+}
+
+.status {
+    color: #ff7a89;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* ACHIEVEMENTS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 27px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: var(--red);
+}
+
+.card-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    color: var(--red);
+    background: #ed243822;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 21px;
+}
+
+.card h3 {
+    font-family: 'Space Grotesk';
+    font-size: 19px;
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 12px;
+    color: var(--gray);
+}
+
+.card-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #ff7885;
+}
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.skill-panel {
+    background: #1d1d24;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 30px;
+}
+
+.skill-panel h3 {
+    font-family: 'Space Grotesk';
+    margin-bottom: 25px;
+}
+
+.skill {
+    margin-bottom: 23px;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.skill-info small {
+    color: #888;
+}
+
+.progress {
+    height: 5px;
+    background: #35353d;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg,#b9132a,#ff6978);
+}
+
+.strength-list {
+    list-style: none;
+}
+
+.strength-list li {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+}
+
+.strength-list span {
+    color: var(--red);
+    margin-right: 18px;
+}
+
+/* PROJECTS */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.project {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.project:hover {
+    transform: translateY(-6px);
+    border-color: var(--red);
+}
+
+.project-art {
+    height: 220px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    background: radial-gradient(circle,#651b2a,#1a1419);
+}
+
+.project-art strong {
+    font-size: 85px;
+    color: var(--red);
+    font-family: 'Space Grotesk';
+}
+
+.project-art small {
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.project-content {
+    padding: 25px;
+}
+
+.project-content h3 {
+    font-family: 'Space Grotesk';
+    font-size: 19px;
+    margin: 10px 0;
+}
+
+.project-content p {
+    color: var(--gray);
+    font-size: 12px;
+}
+
+/* VALUES */
+
+.values {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px 35px;
+}
+
+.value {
+    display: flex;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.value strong {
+    color: var(--red);
+}
+
+.value h3 {
+    font-family: 'Space Grotesk';
+    font-size: 16px;
+}
+
+.value p {
+    color: var(--gray);
+    font-size: 11px;
+}
+
+/* CONTACT */
+
+.contact {
+    text-align: center;
+    padding: 110px 20px;
+    background: radial-gradient(ellipse at center,rgba(53,19,28,.76),rgba(17,17,21,.58) 70%);
+}
+
+.contact h2 {
+    font-family: 'Space Grotesk';
+    font-size: clamp(40px,6vw,65px);
+    line-height: 1.15;
+    margin: 20px 0;
+}
+
+.contact p {
+    color: var(--gray);
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+/* FOOTER */
+
+footer {
+    background: rgba(11,11,14,.78);
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    padding: 30px 0;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-inner p, .footer-inner small {
+    color: #888;
+    font-size: 10px;
+}
+
+/* ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width: 900px) {
+    .nav-links { gap: 10px; }
+    .nav-links a { font-size: 10px; }
+}
+
+@media(max-width: 700px) {
+    .menu-toggle { display: block; }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: #17171d;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .nav-links a {
+        padding: 12px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 65px;
+    }
+
+    .hero h1 { font-size: 58px; }
+
+    .hero-image { min-height: 390px; }
+
+    .profile {
+        width: 250px;
+        height: 320px;
+    }
+
+    .about-grid,
+    .skills-grid,
+    .cards,
+    .projects,
+    .values {
+        grid-template-columns: 1fr;
+    }
+
+    .section { padding: 80px 0; }
+
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    body::before { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+
+/* PROFESSIONAL HOME PAGE DESIGN */
+#home.hero {
+    width: min(1200px, calc(100% - 48px));
+    min-height: min(790px, calc(100vh - 75px));
+    padding: 82px 58px 88px;
+    margin: 0 auto;
+    position: relative;
+    isolation: isolate;
+    grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+    gap: clamp(36px, 6vw, 88px);
+    overflow: hidden;
+    border-left: 1px solid rgba(255,255,255,.045);
+    border-right: 1px solid rgba(255,255,255,.045);
+}
+
+#home.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.8), transparent 88%);
+}
+
+#home .hero-content { max-width: 650px; position: relative; z-index: 2; }
+#home .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    border: 1px solid rgba(237,36,56,.35);
+    border-radius: 999px;
+    background: rgba(237,36,56,.09);
+    color: #ff9aa5;
+    font-size: 9px;
+    letter-spacing: 2.2px;
+}
+#home .eyebrow::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ff5368;
+    box-shadow: 0 0 13px rgba(255,83,104,.9);
+}
+#home .hello {
+    margin-top: 34px;
+    margin-bottom: 9px;
+    color: #c4c0c8;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+#home h1 {
+    max-width: 700px;
+    font-size: clamp(54px, 6.4vw, 82px);
+    line-height: 1.02;
+    letter-spacing: -5px;
+    text-wrap: balance;
+}
+#home h1 span {
+    display: inline-block;
+    text-shadow: 0 8px 34px rgba(237,36,56,.2);
+}
+#home h2 {
+    margin: 24px 0 17px;
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: #e7e3e8;
+}
+#home #typedText { font-weight: 700; }
+#home .hero-description {
+    max-width: 510px;
+    color: #b0adb7;
+    font-size: 14px;
+    line-height: 1.95;
+}
+#home .buttons { gap: 14px; margin-top: 34px; }
+#home .btn {
+    padding: 14px 21px;
+    border-radius: 7px;
+    font-size: 11px;
+    letter-spacing: .25px;
+}
+#home .btn.primary {
+    background: linear-gradient(110deg, #d71932, #f04458);
+    box-shadow: 0 10px 30px rgba(237,36,56,.22);
+}
+#home .btn.primary:hover { box-shadow: 0 14px 34px rgba(237,36,56,.35); }
+#home .btn.outline {
+    background: rgba(255,255,255,.035);
+    border-color: rgba(255,255,255,.19);
+}
+#home .stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    max-width: 490px;
+    margin-top: 43px;
+}
+#home .stats div {
+    min-height: 76px;
+    padding: 13px 14px;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 8px;
+    background: rgba(255,255,255,.035);
+}
+#home .stats strong { font-size: 20px; line-height: 1.3; }
+#home .stats small { margin-top: 3px; font-size: 9px; letter-spacing: .3px; }
+
+#home .hero-image {
+    min-height: 500px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+#home .hero-image::before,
+#home .hero-image::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(255,92,111,.22);
+    border-radius: 50%;
+    pointer-events: none;
+}
+#home .hero-image::before { width: 430px; height: 430px; }
+#home .hero-image::after { width: 490px; height: 490px; border-style: dashed; opacity: .45; }
+#home .profile {
+    width: min(330px, 78%);
+    height: 430px;
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+    transform: rotate(0deg);
+    border: 1px solid rgba(255,104,124,.7);
+    border-radius: 15px;
+    background: linear-gradient(145deg, rgba(237,36,56,.7), rgba(31,22,31,.9) 45%, rgba(255,255,255,.12));
+    box-shadow: 0 30px 90px rgba(0,0,0,.48), 0 0 55px rgba(237,36,56,.17);
+}
+#home .profile img {
+    display: block;
+    border-radius: 9px;
+    object-position: center 32%;
+}
+#home .floating {
+    z-index: 3;
+    right: -5px;
+    bottom: 36px;
+    min-width: 190px;
+    padding: 15px 18px;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 10px;
+    background: rgba(25,25,32,.88);
+    box-shadow: 0 15px 40px rgba(0,0,0,.35);
+    backdrop-filter: blur(14px);
+    color: #fff;
+    font-weight: 700;
+}
+#home .floating small { color: #b7b2bd; font-weight: 400; }
+#home .floating::first-letter { color: #ff7182; }
+
+@media(max-width: 900px) {
+    #home.hero { padding: 70px 32px; gap: 28px; }
+    #home .hero-image::before { width: 350px; height: 350px; }
+    #home .hero-image::after { width: 405px; height: 405px; }
+    #home .profile { height: 390px; }
+    #home .floating { right: -10px; }
+}
+@media(max-width: 700px) {
+    #home.hero {
+        width: 100%;
+        min-height: auto;
+        padding: 64px 24px 78px;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        border: 0;
+    }
+    #home .hello { margin-top: 27px; }
+    #home h1 { font-size: clamp(48px, 13vw, 64px); letter-spacing: -3.5px; }
+    #home .hero-description { font-size: 13px; }
+    #home .stats { gap: 7px; margin-top: 32px; }
+    #home .stats div { padding: 11px 8px; min-height: 70px; }
+    #home .stats strong { font-size: 18px; }
+    #home .stats small { font-size: 8px; }
+    #home .hero-image { min-height: 410px; margin-top: 4px; }
+    #home .profile { width: 260px; height: 350px; }
+    #home .hero-image::before { width: 315px; height: 315px; }
+    #home .hero-image::after { width: 365px; height: 365px; }
+    #home .floating { right: max(0px, calc((100% - 320px) / 2)); bottom: 13px; }
+}
+@media(prefers-reduced-motion: reduce) {
+    #home .btn, #home .profile { transition: none; }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav class="navbar container">
+
+    <a href="#home" class="logo">
+        <span class="logo-icon">RAS</span>
+        RAS PORTFOLIO<span class="red">.</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#values">Values</a>
+        <a href="#contact" class="nav-button">Contact ↗</a>
+    </div>
+
+</nav>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section class="hero container" id="home">
+
+<div class="hero-content reveal">
+
+    <p class="eyebrow">PORTFOLIO · INFORMATION TECHNOLOGY</p>
+
+    <p class="hello">HELLO, I'M</p>
+
+    <h1>Rey Angelo <span>Soltis.</span></h1>
+
+    <h2>Future IT Professional / <span id="typedText">Web Developer</span></h2>
+
+    <p class="hero-description">
+        I am Rey Angelo Soltis, an aspiring IT professional who enjoys
+        exploring technology, developing creative ideas, and learning how
+        digital experiences are designed and built. I am motivated to grow
+        my skills through practice, curiosity, and meaningful projects.
+    </p>
+
+    <div class="buttons">
+        <a href="#projects" class="btn primary">Explore My Work ↗</a>
+        <a href="#about" class="btn outline">About Me ↓</a>
+    </div>
+
+    <div class="stats">
+        <div><strong>01</strong><small>Creative Mind</small></div>
+        <div><strong>02</strong><small>Problem Solver</small></div>
+        <div><strong>03</strong><small>Always Learning</small></div>
+    </div>
+
+</div>
+
+<div class="hero-image reveal">
+
+    <div class="profile">
+        <img src="portfolio-photo.jpg" alt="Portfolio profile photo" loading="eager">
+    </div>
+
+    <div class="floating">
+        ✦ Achievement Unlocked<br>
+        <small>Passion. Practice. Progress.</small>
+    </div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="section container" id="about">
+
+    <div class="section-heading reveal">
+        <p class="section-label">01 / ABOUT ME</p>
+        <h2>A Little <span>About Me.</span></h2>
+    </div>
+
+    <div class="about-grid">
+
+        <div class="quote reveal">
+            <img class="about-photo" src="portfolio-photo.jpg" alt="Portfolio photo with a championship trophy" loading="lazy">
+            <span>“</span>
+            <h3>Technology gives us the power to turn imagination into something real.</h3>
+        </div>
+
+        <div class="about-text reveal">
+
+            <p>
+                Hello! My name is <strong>Rey Angelo Soltis</strong>, and I am
+                an Information Technology student who is building a strong
+                foundation in computing and digital technology. I am interested
+                in understanding how websites, applications, computer systems,
+                and other digital tools work. As I continue my studies, I look
+                forward to gaining practical experience, improving my technical
+                knowledge, and discovering the many ways technology can be used
+                to solve everyday problems.
+            </p>
+
+            <p>
+                I enjoy exploring creative ideas and turning what I learn into
+                projects that help me become more confident and capable. I am
+                especially interested in web development, programming, interface
+                design, and game development. I understand that learning
+                technology takes patience and consistent practice, so I try to
+                treat every activity, challenge, and mistake as an opportunity
+                to improve. I also value teamwork, open-mindedness, and the
+                chance to learn from other people's ideas and experiences.
+            </p>
+
+            <p>
+                My long-term goal is to become a knowledgeable and responsible IT
+                professional who can create useful, accessible, and meaningful
+                digital solutions. I hope to continue developing my skills,
+                take on new challenges, and build projects that show both
+                creativity and careful problem-solving. I believe progress
+                comes from dedication, continuous learning, and the willingness
+                to keep improving. Through this portfolio, I want to present
+                my growth, the work I have completed, and the goals I am
+                working toward as I continue my journey in IT.
+            </p>
+
+            <div class="tags">
+                <span>Creativity</span>
+                <span>Technology</span>
+                <span>Learning</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section section-dark" id="education">
+<div class="container">
+
+    <div class="section-heading reveal">
+        <p class="section-label">02 / MY JOURNEY</p>
+        <h2>Academic <span>Background.</span></h2>
+        <p class="description">My educational journey and learning experiences.</p>
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item reveal">
+            <span class="dot"></span>
+            <p class="date">CURRENT • 2026</p>
+
+            <div class="timeline-card">
+                <span class="status">UNDERGRADUATE</span>
+                <h3>Bachelor of Science in Information Technology</h3>
+                <p>YOUR UNIVERSITY / COLLEGE</p>
+                <p>
+                    Currently developing my knowledge of computing,
+                    programming, web technologies, and information systems.
+                </p>
+                <div class="tags">
+                    <span>Computing</span>
+                    <span>Programming</span>
+                    <span>Web Technologies</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item reveal">
+            <span class="dot"></span>
+            <p class="date">PREVIOUS EDUCATION</p>
+
+            <div class="timeline-card">
+                <span class="status">COMPLETED</span>
+                <h3>Senior High School</h3>
+                <p>New Lucena National Comprehensive High School</p>
+                <p>Computer Systems Servicing</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="section container" id="achievements">
+
+    <div class="section-heading reveal">
+        <p class="section-label">03 / MILESTONES</p>
+        <h2>Notable <span>Achievements.</span></h2>
+        <p class="description">My accomplishments, recognition, and learning experiences.</p>
+    </div>
+
+    <div class="cards">
+
+        <article class="card reveal">
+            <div class="card-icon">✦</div>
+            <p class="card-label">ACADEMIC</p>
+            <h3>Academic Recognition</h3>
+            <p>Title: Academic Growth & Recognition
+
+Description:
+Throughout my academic journey, I have continuously worked hard to improve my knowledge, develop my skills, and achieve my educational goals. I value every learning opportunity and challenge because they help me become a more responsible, dedicated, and motivated student.</p>
+        </article>
+
+        <article class="card reveal">
+            <div class="card-icon">⌘</div>
+            <p class="card-label">LEARNING</p>
+            <h3>Certificates & Courses</h3>
+            <p>Title: Training & Learning Experiences
+
+Description:
+I continuously explore new knowledge and develop my technical skills through different learning activities. As an IT student, I am interested in web development, programming, graphic design, and modern technologies. I believe that learning new skills will help me prepare for future opportunities in the technology industry.</p>
+        </article>
+
+        <article class="card reveal">
+            <div class="card-icon">↗</div>
+            <p class="card-label">PARTICIPATION</p>
+            <h3>Projects & Teamwork</h3>
+            <p>Title: School Projects & Collaboration
+
+Description:
+I have participated in different academic projects and group activities that helped me develop my creativity, communication, teamwork, and problem-solving skills. These experiences taught me how to share ideas, work with others, manage responsibilities, and turn creative concepts into meaningful outputs.</p>
+        </article>
+
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section section-dark" id="skills">
+<div class="container">
+
+    <div class="section-heading reveal">
+        <p class="section-label">04 / MY TOOLKIT</p>
+        <h2>Skills & <span>Expertise.</span></h2>
+        <p class="description">Technical abilities and personal strengths I am developing.</p>
+    </div>
+
+    <div class="skills-grid">
+
+        <div class="skill-panel reveal">
+            <h3>Technical Skills</h3>
+
+            <div class="skill">
+                <div class="skill-info"><span>HTML5</span><small>Learning</small></div>
+                <div class="progress"><span style="width:55%"></span></div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info"><span>CSS3</span><small>Learning</small></div>
+                <div class="progress"><span style="width:45%"></span></div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info"><span>JavaScript</span><small>Beginner</small></div>
+                <div class="progress"><span style="width:25%"></span></div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-info"><span>C++ / Python</span><small>Exploring</small></div>
+                <div class="progress"><span style="width:15%"></span></div>
+            </div>
+        </div>
+
+        <div class="skill-panel reveal">
+            <h3>Personal Strengths</h3>
+
+            <ul class="strength-list">
+                <li><span>01</span> Problem-solving</li>
+                <li><span>02</span> Team collaboration</li>
+                <li><span>03</span> Adaptability</li>
+                <li><span>04</span> Time management</li>
+                <li><span>05</span> Continuous learning</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section container" id="projects">
+
+    <div class="section-heading reveal">
+        <p class="section-label">05 / MY WORK</p>
+        <h2>Projects & <span>Research.</span></h2>
+        <p class="description">Some of my academic projects and creative ideas.</p>
+    </div>
+
+    <div class="projects">
+
+        <article class="project reveal">
+            <div class="project-art">
+                <strong>RAS</strong>
+                <small>PERSONAL WEB DESIGN</small>
+            </div>
+
+            <div class="project-content">
+                <p class="card-label">01 / WEB DEVELOPMENT</p>
+                <h3>Rey Angelo Soltis Portfolio</h3>
+                <p>
+                    A personal website that showcases my background,
+                    skills, academic journey, and projects.
+                </p>
+                <div class="tags">
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="project reveal">
+            <div class="project-art">
+                <strong>忍</strong>
+                <small>GAME DEVELOPMENT CONCEPT</small>
+            </div>
+
+            <div class="project-content">
+                <p class="card-label">02 / GAME DEVELOPMENT</p>
+                <h3>Shinobi Battle Legend</h3>
+                <p>
+                    A MOBA-inspired game concept focused on character
+                    abilities, map design, and team-based gameplay.
+                </p>
+                <div class="tags">
+                    <span>Unity</span><span>Blender</span><span>Game Design</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="project reveal">
+            <div class="project-art">
+                <strong>✦</strong>
+                <small>ACADEMIC INFOGRAPHIC</small>
+            </div>
+
+            <div class="project-content">
+                <p class="card-label">03 / VISUAL COMMUNICATION</p>
+                <h3>Gender-Responsive Laws Infographic</h3>
+                <p>
+                    A group academic infographic about laws promoting
+                    safety, equality, and protection.
+                </p>
+                <div class="tags">
+                    <span>Research</span><span>Design</span><span>Teamwork</span>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- VALUES -->
+<section class="section section-dark" id="values">
+<div class="container">
+
+    <div class="section-heading reveal">
+        <p class="section-label">06 / MY PRINCIPLES</p>
+        <h2>Work Ethics & <span>Core Values.</span></h2>
+    </div>
+
+    <div class="values">
+
+        <div class="value reveal">
+            <strong>01</strong>
+            <div>
+                <h3>Responsibility</h3>
+                <p>I take ownership of my tasks and complete them properly.</p>
+            </div>
+        </div>
+
+        <div class="value reveal">
+            <strong>02</strong>
+            <div>
+                <h3>Continuous Learning</h3>
+                <p>I stay open to feedback and improve my knowledge.</p>
+            </div>
+        </div>
+
+        <div class="value reveal">
+            <strong>03</strong>
+            <div>
+                <h3>Collaboration</h3>
+                <p>I respect different ideas and contribute to team goals.</p>
+            </div>
+        </div>
+
+        <div class="value reveal">
+            <strong>04</strong>
+            <div>
+                <h3>Integrity</h3>
+                <p>I value honesty, respect, and professionalism.</p>
+            </div>
+        </div>
+
+        <div class="value reveal">
+            <strong>05</strong>
+            <div>
+                <h3>Quality</h3>
+                <p>I pay attention to details and aim for good results.</p>
+            </div>
+        </div>
+
+        <div class="value reveal">
+            <strong>06</strong>
+            <div>
+                <h3>Adaptability</h3>
+                <p>I welcome challenges and adjust to new situations.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <p class="section-label">LET'S CONNECT</p>
+
+    <h2>Let's Create<br><span>Something Meaningful.</span></h2>
+
+    <p>
+        Thank you for taking the time to explore my portfolio. I am always
+        open to learning new things, sharing ideas, and taking part in
+        meaningful projects. I look forward to connecting with people,
+        gaining new experiences, and continuing to grow in information
+        technology.
+    </p>
+
+    <a href="mailto:YOUR-EMAIL@example.com" class="btn primary">
+        Send Me an Email ↗
+    </a>
+
+</section>
+
+</main>
+
+<footer>
+<div class="container footer-inner">
+
+    <a href="#home" class="logo">
+        <span class="logo-icon">RAS</span>
+        RAS PORTFOLIO<span class="red">.</span>
+    </a>
+
+    <p>Designed & Built by Rey Angelo Soltis</p>
+
+    <small>© <span id="year"></span> Rey Angelo Soltis. All Rights Reserved.</small>
+
+</div>
+</footer>
+
+<script>
+
+// MOBILE MENU
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+    });
+});
+
+// COPYRIGHT YEAR
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+// SCROLL ANIMATION
+const observer = new IntersectionObserver((entries, obs) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+        }
+
+    });
+
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+// CHANGING TITLE
+const roles = [
+    "Web Developer",
+    "IT Student",
+    "Creative Thinker",
+    "Future Programmer"
+];
+
+let roleIndex = 0;
+const typedText = document.getElementById("typedText");
+
+setInterval(() => {
+
+    roleIndex = (roleIndex + 1) % roles.length;
+
+    typedText.style.opacity = "0";
+
+    setTimeout(() => {
+        typedText.textContent = roles[roleIndex];
+        typedText.style.opacity = "1";
+    }, 250);
+
+}, 2500);
+
+</script>
+
+</body>
+</html>
